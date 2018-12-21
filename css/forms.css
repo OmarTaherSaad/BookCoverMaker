@@ -1,0 +1,56 @@
+.form-group {
+  position: relative;
+	margin: 1em 0 0 !important;
+	transition: margin 300ms linear;
+}
+
+.form-group.focused {
+	margin: 2em 0 0 !important;
+}
+
+label:not(.no-effect-label) {
+	font-size: 80%;
+	cursor: text;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #999;
+  z-index: 10;
+  -webkit-transition: font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+  transition: font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+  transition: transform 500ms ease-out, font-size 500ms ease-out;
+  transition: transform 500ms ease-out, font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+}
+
+.focused label:not(.no-effect-label) {
+	transform-origin: bottom;
+  -webkit-transform: translateY(-160%);
+          transform: translateY(-160%);
+	color: #444444 !important;
+	font-weight: bold;
+}
+
+input {
+  outline: 0;
+  border: 0;
+  -webkit-box-shadow: 0 1px 0 0 #e5e5e5;
+          box-shadow: 0 1px 0 0 #e5e5e5;
+  -webkit-transition: -webkit-box-shadow 500ms ease-out;
+  transition: -webkit-box-shadow 500ms ease-out;
+  transition: box-shadow 500ms ease-out;
+  transition: box-shadow 500ms ease-out, -webkit-box-shadow 500ms ease-out;
+}
+input:focus {
+  -webkit-box-shadow: 0 2px 0 0 blue !important;
+          box-shadow: 0 2px 0 0 blue !important;
+}
+
+input.filled {
+  -webkit-box-shadow: 0 2px 0 0 lightgreen;
+          box-shadow: 0 2px 0 0 lightgreen;
+}
+
+input.invalid {
+  -webkit-box-shadow: 0 2px 0 0 red;
+          box-shadow: 0 2px 0 0 red;
+}

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    
+
     <link rel="stylesheet" href="css/MainStyle.css" />
 
     <!--PaceJS loading bar-->
@@ -15,11 +16,12 @@
 
     <title>Book Cover Maker</title>
 
-    <link rel="stylesheet" type="text/css" href="css/forms.css"/>
-    <link rel="stylesheet" type="text/css" href="css/pace.css"/>
+    <link rel="stylesheet" type="text/css" href="css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="css/pace.css" />
     <script type="text/javascript" src="js/forms.js"></script>
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
   </head>
+
   <body>
     <div class="container-fluid pt-2">
       <h1>Book Cover Maker</h1>
@@ -29,45 +31,93 @@
           <br>
           <button class="btn btn-primary" id="SaveBtn">Save Cover</button>
           <form id="DataForm">
+            <!-- Data -->
+            <div class='form-group'>
+              <label>Book Title</label>
+              <input type='text' class='form-control' name='BookTitle' />
+            </div>
+            <div class='form-group'>
+              <label>Book Subtitle</label>
+              <input type='text' class='form-control' name='BookSubtitle' />
+            </div>
+            <div class='form-group'>
+              <label>Author Name</label>
+              <input type='text' class='form-control' name='AuthorName' />
+            </div>
+            <div class='form-group'>
+              <label>Publisher</label>
+              <input type='text' class='form-control' name='Publisher' />
+            </div>
+            <div class='form-group'>
+              <label>Publishing Year</label>
+              <input type='text' class='form-control' name='PublishingYear' />
+            </div>
+            <!-- Colors -->
+            <div class='form-group focused'>
+              <label>Background Color</label>
+              <input class='form-control jscolor filled' name='BGColor' value='white' />
+              </div>
+            <div class='form-group focused'>
+              <label>Book Title Color</label>
+              <input class='form-control jscolor filled' name='BookTitleColor' value="#FF0000"/>
+            </div>
+            <div class='form-group focused'>
+              <label>Book Subtitle Color</label>
+              <input class='form-control jscolor filled' name='BookSubtitleColor' value="#000000"/>
+            </div>
+            <div class='form-group focused'>
+              <label>Author Name Color</label>
+              <input class='form-control jscolor filled' name='AuthorNameColor' value="#590000"/>
+            </div>
+            <div class='form-group focused'>
+              <label>Publisher Color</label>
+              <input class='form-control jscolor filled' name='PublisherColor' value="#000000"/>
+            </div>
+            <div class='form-group focused'>
+              <label>Publishing Year Color</label>
+              <input class='form-control jscolor filled' name='PublishingYearColor' value="#000000"/>
+            </div>
           </form>
         </div>
 
-				<div class="col-12 col-md-7">
+        <div class="col-12 col-md-7">
           <!--Cover Preview-->
-					<section id="BookCover">
+          <section id="BookCover" class="mx-auto my-3 my-md-0">
             <div class="row justify-content-center text-center">
               <div class="col-12" id="PublisherContainer">
-                <h6>Brought to you by: <span id="Publisher">Publisher</span></h6>
+                <h6 data-toggle="tooltip" data-placement="left" title="Publisher">Brought to you by: <span id="Publisher">Publisher</span></h6>
               </div>
               <div class="col-12" id="Titles">
                 <h1 id="BookTitle" data-toggle="tooltip" data-placement="left" title="Your Title">Your Title</h1>
-                <h3 id="BookSubtitle" data-toggle="tooltip" data-placement="left" title="Your Subtitle">Your Subtitle Here</h3>
+                <h3 id="BookSubtitle" data-toggle="tooltip" data-placement="left" title="Your Subtitle">Your Subtitle
+                  Here</h3>
               </div>
               <div class="col-12" id="AuthorAndYear">
                 <span>By:</span>
                 <h3 id="AuthorName" data-toggle="tooltip" data-placement="left" title="Author">Author</h3>
-                <h6 id="PublishingYear" data-toggle="tooltip" data-placement="left" title="Publishing Year">Publishing Year Here</h6>
+                <h6 id="PublishingYear" data-toggle="tooltip" data-placement="left" title="Publishing Year">Publishing
+                  Year Here</h6>
               </div>
             </div>
           </section>
-				</div>
+        </div>
       </div>
     </div>
     <!--Footer Start-->
-    <footer class="footer text-center bg-light text-dark">
+    <footer class="footer text-center bg-dark text-light">
       <div class="container">
         <div class="row justify-content-center align-items-center py-1">
           <div class="col-12">
-            <h6 class="text-monospace mb-0">
+            <h6 class="text-monospace mb-0 text-light font-weight-bold">
               Developed by
-              <a href="mailto:omartahersaad@outlook.com">Omar Taher Saad</a>
+              <a href="mailto:work@otscommunity.com">OTS</a>
             </h6>
           </div>
         </div>
       </div>
     </footer>
     <!--Footer End-->
-   
+
 
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -76,7 +126,7 @@
           <div class="modal-body">
             <h2>You can download the cover by right-clicking it and choosing "save image as"</h2>
             <span>or click outside this rectangle to return to editing.</span>
-            <canvas id="previewImage"></canvas>
+            <canvas id="previewImage" class="w-100"></canvas>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,70 +140,42 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-		<script defer src="js/MainScript.js"></script>
-		<script defer src="js/jscolor.js"></script>
+    <script defer src="js/MainScript.js"></script>
+    <script defer src="js/jscolor.js"></script>
     <script>
       //Footer Year
       $date = new Date();
       $("#CurrentYear").html($date.getFullYear());
-			//Main Info
-			var dataFields = {
-				"Book Title" : "#000000",
-				'Book Subtitle': "#000000",
-				'Author Name': "#000000",
-				'Publisher': "#000000",
-				'Publishing Year': "#000000"
-			};
-			var MainForm = '';
-			var ColorsForm = "<div class= 'form-group focused'><label>Background Color</label><input class='form-control jscolor filled' name='BGColor' value='white'/></div>";
-			for(var value in dataFields) {
-				Color = dataFields[value];
-        //Coloring
-        ColorsForm += "<div class= 'form-group focused'><label class='colorLabel no-effect-label'>" + value + " Color</label><input class='form-control jscolor filled' name='" + value.replace(" ", "") + "Color' value='" + Color + "'/></div>";
-        if (value.includes("Year")) {
-          MainForm += "<div class= 'form-group'><label class='no-effect-label'>" + value + "</label><select class='custom-select' name='"+value.replace(" ", "")+"'><option selected>Publishing Year</option>";
-          for (var i = 0; i < 200; i++) {
-            MainForm += "<option>"+($date.getFullYear()-i)+"</option>";
-          }
-          MainForm += "</select></div>";
-          continue;
-        }
-				MainForm += "<div class= 'form-group'><label>" + value + "</label><input type='text' class='form-control' name='" + value.replace(" ", "") + "'/></div>";
-				
-			}
-			MainForm += "<br><br>";
-			document.getElementById("DataForm").innerHTML += MainForm + ColorsForm;
 
       //Enable tooltip on page load
       $('[data-toggle="tooltip"]').tooltip();
 
       //Detect Input change and update cover
-      $("input:not(.jscolor)").on("change keyup paste",function () {
+      $("input:not(.jscolor)").on("change keyup paste", function ()
+      {
         var id = $(this).attr("name");
         $("#" + id).html($(this).val());
       });
-      //Year Change
-      $("select").change(function() {
-        var id = $(this).attr("name");
-        $("#" + id).html(this.value);
-      });
       //Colors Changing
-      $(".jscolor").on("change keyup paste", function () {
+      $(".jscolor").on("change keyup paste", function ()
+      {
         if ($(this).attr("name") == "BGColor") {
           $("#BookCover").css("background-color", "#" + $(this).val());
         }
         var id = $(this).attr("name");
-        id = id.replace("Color","");
-        $("#" + id).css('color',"#"+$(this).val());
+        id = id.replace("Color", "");
+        $("#" + id).css('color', "#" + $(this).val());
       });
 
-        //Render Cover as Image and show it inside a modal
-        $("#SaveBtn").on('click', function () {
-          html2canvas($("#BookCover")[0], {
-            canvas: $("#previewImage")[0]
-          });
-          $("#Modal").modal('handleUpdate').modal("show");
+      //Render Cover as Image and show it inside a modal
+      $("#SaveBtn").on('click', function ()
+      {
+        html2canvas($("#BookCover")[0], {
+          canvas: $("#previewImage")[0]
         });
+        $("#Modal").modal('handleUpdate').modal("show");
+      });
     </script>
   </body>
+
 </html>
